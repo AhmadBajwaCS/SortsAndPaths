@@ -14,6 +14,9 @@ public class SortsClass extends ScreenClass{
     int rand = 20; int firstRedInd = 1000; int secondRedInd = 1000;
     SortsThreadClass sortThread = new SortsThreadClass(this, 0);
     Color objectColor = new Color(62, 122, 207);
+    boolean canRun = true;
+    ArrayList<Integer> redInd = new ArrayList<Integer>();
+
     SortsClass(){
 
     }
@@ -30,6 +33,7 @@ public class SortsClass extends ScreenClass{
         g2D.setColor(Color.BLACK);
         //draw(g);
         g2D.drawRect(10, 950, 150, 85 );
+        g2D.drawRect(500, 950, 150, 85 );
     }
 
     public void initializeArray(){
@@ -39,7 +43,6 @@ public class SortsClass extends ScreenClass{
         }
 
         shuffleArray();
-        Collections.shuffle(circleRad);
 
     }
 
@@ -49,7 +52,7 @@ public class SortsClass extends ScreenClass{
         g2D.setColor(objectColor);
 
         for(int i = 0; i<numBars;i++){
-            if (i == firstRedInd || i == secondRedInd)
+            if (redInd.contains(i))
                 g2D.setColor(Color.RED);
             g2D.fillRect(i*10, 920-array[i]*4, barWidth, array[i]*4);
             g2D.setColor(Color.BLACK);
@@ -66,11 +69,27 @@ public class SortsClass extends ScreenClass{
         int mouseX = e.getX();
         int mouseY = e.getY();
 
-        if( (mouseX > 10 && mouseX < 160) && (mouseY > 950 && mouseY < 1035)){
-            sortThread = new SortsThreadClass(this, 1);
-            sortThread.start();
-            //screen.repaint();
+        if(canRun) {
+            if ((mouseX > 10 && mouseX < 160) && (mouseY > 950 && mouseY < 1035)) {
+                canRun = false;
+                sortThread = new SortsThreadClass(this, 1);
+                sortThread.start();
+
+            }
+
+            if ((mouseX > 500 && mouseX < 650) && (mouseY > 950 && mouseY < 1035)) {
+                canRun = false;
+                sortThread = new SortsThreadClass(this, 2);
+                sortThread.start();
+
+            }
+
+            if((mouseX > 500 && mouseX < 650) && (mouseY > 10 && mouseY < 95)){
+                shuffleArray();
+            }
         }
+
+
     }
 
     public void shuffleArray(){
@@ -86,25 +105,6 @@ public class SortsClass extends ScreenClass{
 
     }
 
-    public void BubbleSort(){
-
-        //int temp = 0;
-        int n = array.length;
-        for (int i = 0; i < n-1; i++) {
-            for (int j = 0; j < n - i - 1; j++)
-                if (array[j] > array[j + 1]) {
-                    // swap temp and arr[i]
-                    int temp = array[j];
-                    array[j] = array[j + 1];
-                    array[j + 1] = temp;
-                }
-
-            screen.repaint();
-            screen.delayTime(10);
-        }
-        //traverseArray();
-        //screen.repaint();
-    }
 
     public void traverseArray(){
         for(int i = 0; i < array.length; i++){
@@ -113,8 +113,8 @@ public class SortsClass extends ScreenClass{
         System.out.println();
     }
 
-    public void setFirstAndSecond( int i, int j){
-        firstRedInd = i; secondRedInd = j;
+    public void setRedInd( int i){
+        redInd.add(i);
     }
 
     public void setObjectColor( Color c){
