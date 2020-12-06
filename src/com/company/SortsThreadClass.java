@@ -6,14 +6,9 @@ import java.util.Arrays;
 
 public class SortsThreadClass implements Runnable  {
 
-    int runId = 0;
-    //int [] array;
-    //GraphicsPanel screen;
+    int runId;
     private Thread thread;
     SortsClass sortsClass;
-    SortsThreadClass(){
-
-    }
 
     SortsThreadClass(SortsClass sorts, int input){
         runId = input;
@@ -79,8 +74,6 @@ public class SortsThreadClass implements Runnable  {
             delayTime(30);
         }
         finishedSort();
-        //traverseArray();
-        //screen.repaint();
 
     }
 
@@ -93,7 +86,7 @@ public class SortsThreadClass implements Runnable  {
             int temp = sortsClass.array[i];
             int j = i -1;
             while (j>= 0 && sortsClass.array[j] > temp) {
-                sortsClass.redInd = new ArrayList<>(Arrays.asList(j , j+1, i));
+                sortsClass.redInd = new ArrayList<>(Arrays.asList(j, j + 1, i));
                 sortsClass.array[j+1] = sortsClass.array[j];
                 j = j - 1 ;
                 repaint();
@@ -107,8 +100,7 @@ public class SortsThreadClass implements Runnable  {
         }
 
         finishedSort();
-        //traverseArray();
-        //screen.repaint();
+
     }
 
     private void repaint(){
