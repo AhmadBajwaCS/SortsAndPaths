@@ -21,6 +21,7 @@ public class SortsThreadClass implements Runnable  {
     }
 
     public synchronized void stop(){
+        sortsClass.canRun = true;
         try {
             thread.join();
         } catch (InterruptedException e) {
@@ -37,6 +38,9 @@ public class SortsThreadClass implements Runnable  {
             }
             if (runId == 2) {
                 InsertionSort();
+            }
+            if (runId == 3){
+                MergeSort(0, sortsClass.array.length-1);
             }
 
         }
@@ -103,6 +107,68 @@ public class SortsThreadClass implements Runnable  {
 
     }
 
+    public void MergeSort(int l,  int r){
+
+        //int temp = 0;
+        int n = sortsClass.array.length;
+
+        if(l<r) {
+            int m = (l + r) / 2;
+
+            MergeSort(l, m);
+            MergeSort(m+1, r);
+
+            mergeHelper(l, m , r);
+        }
+
+        if(isSorted())
+            finishedSort();
+
+    }
+
+    private void mergeHelper(int l,int m, int r){
+
+        int n1 = m - l + 1;
+        int n2 = r - m;
+
+        int[] Left = Arrays.copyOfRange(sortsClass.array, l, sortsClass.array.length);
+        int[] Right = Arrays.copyOfRange(sortsClass.array, m+1, sortsClass.array.length);
+
+        int i = 0; int j = 0;
+
+        int k = l;
+
+        while (i < n1 && j < n2) {
+
+            sortsClass.redInd = new ArrayList<>(Arrays.asList(k, k-(k-i), k-(k-j)));
+            if (Left[i] <= Right[j]) {
+                sortsClass.array[k] = Left[i];
+                i++;
+            }
+            else {
+                sortsClass.array[k] = Right[j];
+                j++;
+            }
+            k++;
+            repaint();
+            delayTime(5);
+        }
+
+        while (i < n1) {
+            sortsClass.array[k] = Left[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            sortsClass.array[k] = Right[j];
+            j++;
+            k++;
+        }
+        repaint();
+        delayTime(5);
+    }
+
     private void repaint(){
         sortsClass.screen.repaint();
     }
@@ -116,7 +182,6 @@ public class SortsThreadClass implements Runnable  {
         repaint();
         delayTime(500);
         sortsClass.setObjectColor(new Color(62, 122, 207));
-        sortsClass.canRun = true;
         sortsClass.redInd = new ArrayList<Integer>();
         stop();
     }

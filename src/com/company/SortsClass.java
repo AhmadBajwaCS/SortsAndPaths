@@ -10,12 +10,12 @@ public class SortsClass extends ScreenClass{
     int barWidth = 10;
     int numBars = 1900/barWidth;
     int [] array = new int[numBars];
-    List<Integer> circleRad = new ArrayList<>();;
+    List<Integer> circleRad = new ArrayList<>();
     int rand = 20; int firstRedInd = 1000; int secondRedInd = 1000;
     SortsThreadClass sortThread = new SortsThreadClass(this, 0);
     Color objectColor = new Color(62, 122, 207);
     boolean canRun = true;
-    ArrayList<Integer> redInd = new ArrayList<Integer>();
+    ArrayList<Integer> redInd = new ArrayList<>();
 
     SortsClass(){
 
@@ -34,6 +34,8 @@ public class SortsClass extends ScreenClass{
         //draw(g);
         g2D.drawRect(10, 950, 150, 85 );
         g2D.drawRect(500, 950, 150, 85 );
+        g2D.drawRect(700, 950, 150, 85 );
+        g2D.drawRect(500, 10, 150, 85 );
     }
 
     public void initializeArray(){
@@ -70,6 +72,7 @@ public class SortsClass extends ScreenClass{
         int mouseY = e.getY();
 
         if(canRun) {
+
             if ((mouseX > 10 && mouseX < 160) && (mouseY > 950 && mouseY < 1035)) {
                 canRun = false;
                 sortThread = new SortsThreadClass(this, 1);
@@ -80,6 +83,13 @@ public class SortsClass extends ScreenClass{
             if ((mouseX > 500 && mouseX < 650) && (mouseY > 950 && mouseY < 1035)) {
                 canRun = false;
                 sortThread = new SortsThreadClass(this, 2);
+                sortThread.start();
+
+            }
+
+            if ((mouseX > 700 && mouseX < 850) && (mouseY > 950 && mouseY < 1035)) {
+                canRun = false;
+                sortThread = new SortsThreadClass(this, 3);
                 sortThread.start();
 
             }
