@@ -32,7 +32,7 @@ public class SortsThreadClass implements Runnable  {
     @Override
     public void run() {
         if(!isSorted()) {
-            System.out.println("WE ARE HERE");
+
             if (runId == 1) {
                 BubbleSort();
             }

@@ -30,12 +30,28 @@ public class SortsClass extends ScreenClass{
     public void drawElements(Graphics g) {
         super.drawElements(g);
         Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.BLACK);
+
         //draw(g);
-        g2D.drawRect(10, 950, 150, 85 );
-        g2D.drawRect(500, 950, 150, 85 );
-        g2D.drawRect(700, 950, 150, 85 );
-        g2D.drawRect(500, 10, 150, 85 );
+        ;
+
+        g2D.setColor(Color.WHITE);
+        g2D.fillRoundRect(10, 950, 200, 85 , 50, 50);
+        g2D.fillRoundRect(500, 950, 200, 85,50, 50 );
+        g2D.fillRoundRect(750, 950, 200, 85 , 50, 50);
+        g2D.fillRoundRect(500, 10, 200, 85 , 50, 50);
+
+        g2D.setColor(Color.BLACK);
+        g2D.drawRoundRect(10, 950, 200, 85 , 50, 50);
+        g2D.drawRoundRect(500, 950, 200, 85 , 50, 50);
+        g2D.drawRoundRect(750, 950, 200, 85 , 50, 50);
+        g2D.drawRoundRect(500, 10, 200, 85 , 50, 50);
+
+        g2D.setFont(new Font("OpenSans", Font.BOLD, 45));
+        g2D.drawString("Shuffle", 525,70);
+
+        g2D.setFont(new Font("OpenSans", Font.PLAIN, 35));
+        g2D.drawString("Bubble Sort", 20,1005);
+
     }
 
     public void initializeArray(){
@@ -73,28 +89,28 @@ public class SortsClass extends ScreenClass{
 
         if(canRun) {
 
-            if ((mouseX > 10 && mouseX < 160) && (mouseY > 950 && mouseY < 1035)) {
+            if ((mouseX > 10 && mouseX < 210) && (mouseY > 950 && mouseY < 1035)) {
                 canRun = false;
                 sortThread = new SortsThreadClass(this, 1);
                 sortThread.start();
 
             }
 
-            if ((mouseX > 500 && mouseX < 650) && (mouseY > 950 && mouseY < 1035)) {
+            if ((mouseX > 500 && mouseX < 700) && (mouseY > 950 && mouseY < 1035)) {
                 canRun = false;
                 sortThread = new SortsThreadClass(this, 2);
                 sortThread.start();
 
             }
 
-            if ((mouseX > 700 && mouseX < 850) && (mouseY > 950 && mouseY < 1035)) {
+            if ((mouseX > 750 && mouseX < 950) && (mouseY > 950 && mouseY < 1035)) {
                 canRun = false;
                 sortThread = new SortsThreadClass(this, 3);
                 sortThread.start();
 
             }
 
-            if((mouseX > 500 && mouseX < 650) && (mouseY > 10 && mouseY < 95)){
+            if((mouseX > 500 && mouseX < 700) && (mouseY > 10 && mouseY < 95)){
                 shuffleArray();
             }
         }

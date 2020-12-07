@@ -60,7 +60,7 @@ public class GraphicsPanel extends JPanel implements MouseListener {
         }
 
         if (initialRun) {
-            Fadein(g, 20);
+            Fadein(g, 10);
             repaint();
         }
 
@@ -75,10 +75,6 @@ public class GraphicsPanel extends JPanel implements MouseListener {
 
         }
 
-        /*if(transitonBool) {
-            transition(g);
-            transitonBool = false;
-        }*/
     }
 
     public void Fadein(Graphics g, int delayAmount){

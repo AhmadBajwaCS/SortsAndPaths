@@ -11,7 +11,6 @@ public class ScreenClass {
     GraphicsPanel screen;
 
     ScreenClass(){
-        if(colorPallete.isEmpty())
             createColorPallete();
     }
 
@@ -30,10 +29,18 @@ public class ScreenClass {
 
     public void drawElements(Graphics g){
         Graphics2D g2D = (Graphics2D) g;
-        g2D.setColor(Color.BLACK);
 
+        g2D.setColor(new Color(213, 223, 239));
+        g2D.fillRoundRect(10, 10, 200, 85 , 50, 50);
+
+        g2D.setColor(Color.BLACK);
         g2D.drawLine(0, 100, 2000, 100);
-        g2D.drawRect(10, 10, 150, 85 );
+        g2D.drawRoundRect(10, 10, 200, 85, 50 , 50 );
+
+
+        g2D.setFont(new Font("OpenSans", Font.BOLD, 45));
+        g2D.drawString("< BACK", 25,70);
+
     }
 
 
@@ -42,7 +49,7 @@ public class ScreenClass {
         int mouseX = e.getX();
         int mouseY = e.getY();
 
-        if( (mouseX > 10 && mouseX < 160) && (mouseY > 10 && mouseY < 90)){
+        if( (mouseX > 10 && mouseX < 210) && (mouseY > 10 && mouseY < 90)){
             screen.setScreenId(0);
             System.out.println("TEST");
             //screen.repaint();
