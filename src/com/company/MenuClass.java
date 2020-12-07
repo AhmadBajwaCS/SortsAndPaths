@@ -27,8 +27,20 @@ public class MenuClass extends ScreenClass{
 
         g2D.setColor(getColor("1")/*new Color(255, 133, 173)*/);
         g2D.drawRoundRect(400, 200, 1100, 800, 50, 50);
+
         drawTitle(g);
         drawButtons(g);
+
+        g2D.setColor(new Color(255, 162, 239));
+        g2D.fillRect(150, 0, 5, 1200);
+        g2D.fillRect(1750, 0, 5, 1200);
+        g2D.setColor(new Color(45, 121, 183));
+        g2D.fillRect(0,0, 2000, 100);
+        g2D.setColor(Color.BLACK);
+        g2D.drawRect(0,0, 2000, 100);
+        g2D.setColor(new Color(255, 162, 239));
+        g2D.fillRect(0, 100, 2000, 5);
+
 
     }
 
@@ -59,6 +71,8 @@ public class MenuClass extends ScreenClass{
         g2D.drawString("SORTS AND PATHS", textX,textY);
 
 
+
+
         g2D.setColor(new Color(67, 55, 151));
         g2D.fillRect(100, 0, 100, 1200);
         g2D.fillRect(1700, 0, 100, 1200);
@@ -71,17 +85,37 @@ public class MenuClass extends ScreenClass{
         int w = 600; int h = 100;
         int arc = 50;
 
+        g2D.setColor(Color.BLACK);
+        g2D.fillRoundRect(xPos + 5, yPos + 5, w, h + 10, arc , arc);
         g2D.setColor(new Color(130, 90, 255));      // Sorts Button
         g2D.fillRoundRect(xPos, yPos, w, h, arc , arc);
         g2D.setColor(new Color(141, 86, 162));
         g2D.drawRoundRect(xPos, yPos, w, h, arc , arc );
+        g2D.setColor(Color.BLACK);
+        g2D.setFont(new Font("Georgia", Font.BOLD, 76));
+        g2D.drawString("Sorts", 848, 480);
+        g2D.drawString("Sorts", 850, 480);
         g2D.setColor(new Color(234, 246, 255));
+        g2D.setFont(new Font("Georgia", Font.BOLD, 75));
+        g2D.drawString("Sorts", 850, 480);
 
+
+        g2D.setColor(Color.BLACK);
+        g2D.fillRoundRect(xPos + 5, yPos + 5 + 200, w, h + 10, arc , arc);
         g2D.setColor(new Color(130, 90, 255));      // Algo Button
         g2D.fillRoundRect(xPos, yPos + 200, w, h , arc , arc);
         g2D.setColor(new Color(141, 86, 162));
         g2D.drawRoundRect(xPos, yPos + 200, w, h, arc , arc );
         g2D.setColor(new Color(234, 246, 255));
+        g2D.setColor(Color.BLACK);
+        g2D.setFont(new Font("Georgia", Font.BOLD, 76));
+        g2D.drawString("Pathfinding", 730, 675);
+        g2D.drawString("Pathfinding", 728, 675);
+        g2D.setColor(new Color(234, 246, 255));
+        g2D.setFont(new Font("Georgia", Font.BOLD, 75));
+        g2D.drawString("Pathfinding", 730, 675);
+
+
     }
 
     public void checkButtons(MouseEvent e) {

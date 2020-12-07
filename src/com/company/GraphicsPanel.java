@@ -117,7 +117,6 @@ public class GraphicsPanel extends JPanel implements MouseListener {
         long startTime = System.currentTimeMillis(); long elapsedTime = 0L;
 
         while (elapsedTime < delayAmount) {
-            //perform db poll/check
             elapsedTime = (new Date()).getTime() - startTime;
         }
 

@@ -31,23 +31,20 @@ public class SortsClass extends ScreenClass{
         super.drawElements(g);
         Graphics2D g2D = (Graphics2D) g;
 
-        //draw(g);
-        ;
-
         g2D.setColor(Color.WHITE);
-        g2D.fillRoundRect(10, 950, 200, 85 , 50, 50);
-        g2D.fillRoundRect(500, 950, 200, 85,50, 50 );
-        g2D.fillRoundRect(750, 950, 200, 85 , 50, 50);
-        g2D.fillRoundRect(500, 10, 200, 85 , 50, 50);
+        g2D.fillRoundRect(10, 950, 200, 85 , 50, 50);   //Bubble Sort
+        g2D.fillRoundRect(500, 950, 200, 85,50, 50 );   //Insertion Sort
+        g2D.fillRoundRect(750, 950, 200, 85 , 50, 50);  //Merge Sort
+        g2D.fillRoundRect(900, 10, 200, 85 , 50, 50);   //Shuffle
 
         g2D.setColor(Color.BLACK);
         g2D.drawRoundRect(10, 950, 200, 85 , 50, 50);
         g2D.drawRoundRect(500, 950, 200, 85 , 50, 50);
         g2D.drawRoundRect(750, 950, 200, 85 , 50, 50);
-        g2D.drawRoundRect(500, 10, 200, 85 , 50, 50);
+        g2D.drawRoundRect(900, 10, 200, 85 , 50, 50);
 
         g2D.setFont(new Font("OpenSans", Font.BOLD, 45));
-        g2D.drawString("Shuffle", 525,70);
+        g2D.drawString("Shuffle", 925,65);
 
         g2D.setFont(new Font("OpenSans", Font.PLAIN, 35));
         g2D.drawString("Bubble Sort", 20,1005);
@@ -110,7 +107,7 @@ public class SortsClass extends ScreenClass{
 
             }
 
-            if((mouseX > 500 && mouseX < 700) && (mouseY > 10 && mouseY < 95)){
+            if((mouseX > 900 && mouseX < 1100) && (mouseY > 5 && mouseY < 90)){     //Shuffle
                 shuffleArray();
             }
         }
