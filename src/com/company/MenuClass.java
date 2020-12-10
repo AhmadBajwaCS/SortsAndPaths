@@ -60,8 +60,8 @@ public class MenuClass extends ScreenClass{
         //g2D.setColor(new Color(234, 246, 255));
         //g2D.setColor(new Color(202, 185, 255));
 
-        int textX = 585;
-        int textY = 220;
+        int textX = 570;
+        int textY = 225;
         g2D.setFont(new Font("Georgia", Font.BOLD, 76));
         g2D.setColor(new Color(0, 0, 0));
         g2D.drawString("SORTS AND PATHS", textX,textY);
@@ -69,9 +69,6 @@ public class MenuClass extends ScreenClass{
         g2D.setFont(new Font("Georgia", Font.BOLD, 75));
         g2D.setColor(new Color(255, 255, 255));
         g2D.drawString("SORTS AND PATHS", textX,textY);
-
-
-
 
         g2D.setColor(new Color(67, 55, 151));
         g2D.fillRect(100, 0, 100, 1200);

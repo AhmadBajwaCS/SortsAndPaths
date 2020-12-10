@@ -38,7 +38,6 @@ public class ScreenClass {
         g2D.drawLine(0, 100, 2000, 100);
         g2D.drawRoundRect(10, 10, 200, 85, 50 , 50 );
 
-
         g2D.setFont(new Font("OpenSans", Font.BOLD, 45));
         g2D.drawString("< BACK", 25,70);
         g2D.drawString("STOP", 1740,70);
