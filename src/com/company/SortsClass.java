@@ -87,24 +87,16 @@ public class SortsClass extends ScreenClass{
         if(canRun) {
 
             if ((mouseX > 250 && mouseX < 450) && (mouseY > 950 && mouseY < 1035)) {    // bubble sort
-                canRun = false;
-                sortThread = new SortsThreadClass(this, 1);
-                sortThread.start();
+                beginSort(1);
 
             }
 
             if ((mouseX > 500 && mouseX < 700) && (mouseY > 950 && mouseY < 1035)) {    // Insertion sort
-                canRun = false;
-                sortThread = new SortsThreadClass(this, 2);
-                sortThread.start();
-
+                beginSort(2);
             }
 
             if ((mouseX > 750 && mouseX < 950) && (mouseY > 950 && mouseY < 1035)) {    // Merge sort
-                canRun = false;
-                sortThread = new SortsThreadClass(this, 3);
-                sortThread.start();
-
+                beginSort(3);
             }
 
             if((mouseX > 900 && mouseX < 1100) && (mouseY > 5 && mouseY < 90)){     //Shuffle
@@ -113,6 +105,12 @@ public class SortsClass extends ScreenClass{
         }
 
 
+    }
+
+    private void beginSort(int sortNum){
+        canRun = false;
+        sortThread = new SortsThreadClass(this, sortNum);
+        sortThread.start();
     }
 
     public void shuffleArray(){
@@ -136,11 +134,11 @@ public class SortsClass extends ScreenClass{
         System.out.println();
     }
 
-    public void setRedInd( int i){
+    public void setRedInd(int i){
         redInd.add(i);
     }
 
-    public void setObjectColor( Color c){
+    public void setObjectColor(Color c){
         objectColor = c;
     }
 

@@ -24,7 +24,6 @@ public class MenuClass extends ScreenClass{
     public void drawElements(Graphics g) {
         Graphics2D g2D = (Graphics2D) g;
 
-
         g2D.setColor(getColor("1")/*new Color(255, 133, 173)*/);
         g2D.drawRoundRect(400, 200, 1100, 800, 50, 50);
 
@@ -56,7 +55,6 @@ public class MenuClass extends ScreenClass{
         g2D.setColor(new Color(141, 86, 162));
         g2D.drawRoundRect(xPos, yPos, w, h, arc , arc );
 
-
         //g2D.setColor(new Color(234, 246, 255));
         //g2D.setColor(new Color(202, 185, 255));
 
@@ -66,6 +64,7 @@ public class MenuClass extends ScreenClass{
         g2D.setColor(new Color(0, 0, 0));
         g2D.drawString("SORTS AND PATHS", textX,textY);
         g2D.drawString("SORTS AND PATHS", textX-5,textY);
+
         g2D.setFont(new Font("Georgia", Font.BOLD, 75));
         g2D.setColor(new Color(255, 255, 255));
         g2D.drawString("SORTS AND PATHS", textX,textY);
