@@ -35,12 +35,14 @@ public class SortsClass extends ScreenClass{
         g2D.fillRoundRect(250, 950, 200, 85 , 50, 50);   //Bubble Sort
         g2D.fillRoundRect(500, 950, 200, 85,50, 50 );   //Insertion Sort
         g2D.fillRoundRect(750, 950, 200, 85 , 50, 50);  //Merge Sort
+        g2D.fillRoundRect(1000, 950, 200, 85 , 50, 50); // Quick Sort
         g2D.fillRoundRect(900, 10, 200, 85 , 50, 50);   //Shuffle
 
         g2D.setColor(Color.BLACK);
         g2D.drawRoundRect(250, 950, 200, 85 , 50, 50);
         g2D.drawRoundRect(500, 950, 200, 85 , 50, 50);
         g2D.drawRoundRect(750, 950, 200, 85 , 50, 50);
+        g2D.drawRoundRect(1000, 950, 200, 85 , 50, 50);
         g2D.drawRoundRect(900, 10, 200, 85 , 50, 50);
 
         g2D.setFont(new Font("OpenSans", Font.BOLD, 45));
@@ -48,6 +50,13 @@ public class SortsClass extends ScreenClass{
 
         g2D.setFont(new Font("OpenSans", Font.PLAIN, 35));
         g2D.drawString("Bubble Sort", 260,1005);
+
+        g2D.drawString("Insertion", 530,990);
+        g2D.drawString("Sort", 570,1025);
+
+        g2D.drawString("Merge Sort", 770,1005);
+
+        g2D.drawString("Quick Sort", 1020,1005);
 
     }
 
@@ -59,6 +68,14 @@ public class SortsClass extends ScreenClass{
 
         shuffleArray();
 
+    }
+
+    public boolean checkStop(){
+        if(stopButton) {
+            stopButton = false;
+            return true;
+        }
+        return false;
     }
 
     public void drawArray(Graphics g){
@@ -84,11 +101,11 @@ public class SortsClass extends ScreenClass{
         int mouseX = e.getX();
         int mouseY = e.getY();
 
+
         if(canRun) {
 
             if ((mouseX > 250 && mouseX < 450) && (mouseY > 950 && mouseY < 1035)) {    // bubble sort
                 beginSort(1);
-
             }
 
             if ((mouseX > 500 && mouseX < 700) && (mouseY > 950 && mouseY < 1035)) {    // Insertion sort
@@ -99,9 +116,14 @@ public class SortsClass extends ScreenClass{
                 beginSort(3);
             }
 
+            if ((mouseX > 1000 && mouseX < 1250) && (mouseY > 950 && mouseY < 1035)) {    // Quick sort
+                beginSort(4);
+            }
+
             if((mouseX > 900 && mouseX < 1100) && (mouseY > 5 && mouseY < 90)){     //Shuffle
                 shuffleArray();
             }
+
         }
 
 

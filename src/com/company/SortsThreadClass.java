@@ -22,6 +22,7 @@ public class SortsThreadClass implements Runnable  {
 
     public synchronized void stop(){
         sortsClass.canRun = true;
+
         try {
             thread.join();
         } catch (InterruptedException e) {
@@ -31,6 +32,7 @@ public class SortsThreadClass implements Runnable  {
 
     @Override
     public void run() {
+        System.out.println("RUN METHOD");
         if(!isSorted()) {
 
             if (runId == 1) {
@@ -42,7 +44,9 @@ public class SortsThreadClass implements Runnable  {
             if (runId == 3){
                 MergeSort(0, sortsClass.array.length-1);
             }
-
+            if (runId == 4){
+                QuickSort(0, sortsClass.array.length-1);
+            }
         }
         stop();
     }
@@ -66,12 +70,16 @@ public class SortsThreadClass implements Runnable  {
                 sortsClass.redInd = new ArrayList<>(Arrays.asList(j , j+1));
                 if (sortsClass.array[j] > sortsClass.array[j + 1]) {
                     // swap temp and arr[i]
+                    if(sortsClass.checkStop())
+                        finishedSort();
                     repaint();
                     delayTime(5);
                     int temp = sortsClass.array[j];
                     sortsClass.array[j] = sortsClass.array[j + 1];
                     sortsClass.array[j + 1] = temp;
                 }
+
+
             }
 
             repaint();
@@ -99,6 +107,8 @@ public class SortsThreadClass implements Runnable  {
 
             sortsClass.array[j+1] = temp;
 
+            if(sortsClass.checkStop())
+                finishedSort();
             repaint();
             delayTime(30);
         }
@@ -150,6 +160,9 @@ public class SortsThreadClass implements Runnable  {
                 j++;
             }
             k++;
+
+            if(sortsClass.checkStop())
+                finishedSort();
             repaint();
             delayTime(5);
         }
@@ -165,8 +178,60 @@ public class SortsThreadClass implements Runnable  {
             j++;
             k++;
         }
+
+        if(sortsClass.checkStop())
+            finishedSort();
         repaint();
         delayTime(5);
+    }
+
+    public void QuickSort(int l,  int r){
+
+        //int temp = 0;
+        int n = sortsClass.array.length;
+
+        if(l<r) {
+
+            int partition = QuickSortHelper(l, r);
+
+            QuickSort(l, partition-1);
+            QuickSort(partition+1, r);
+        }
+
+        if(isSorted())
+            finishedSort();
+
+    }
+
+    public int QuickSortHelper(int l, int r){
+
+        int pivot = sortsClass.array[r];
+        int index = l - 1;
+
+        for(int i = l; i <= r - 1; i++)
+        {
+            sortsClass.redInd = new ArrayList<>(Arrays.asList(l, pivot, r, index, i));
+            if(sortsClass.array[i] < pivot)
+            {
+                index++;
+
+                int temp = sortsClass.array[index];
+                sortsClass.array[index] = sortsClass.array[i];
+                sortsClass.array[i] = temp;
+            }
+
+            if(sortsClass.checkStop())
+                finishedSort();
+            repaint();
+            delayTime(5);
+        }
+
+        int temp = sortsClass.array[index+1];
+        sortsClass.array[index+1] = sortsClass.array[r];
+        sortsClass.array[r] = temp;
+
+
+        return index+1;
     }
 
     private void repaint(){
@@ -177,7 +242,7 @@ public class SortsThreadClass implements Runnable  {
         sortsClass.screen.delayTime(i);
     }
 
-    private void finishedSort(){
+    public void finishedSort(){
         sortsClass.setObjectColor(new Color (43, 189, 92));
         repaint();
         delayTime(500);

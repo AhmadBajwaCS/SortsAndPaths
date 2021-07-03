@@ -9,6 +9,7 @@ public class ScreenClass {
 
     Map<String, Color> colorPallete = new HashMap<String, Color>();
     GraphicsPanel screen;
+    boolean stopButton = false;
 
     ScreenClass(){
             createColorPallete();
@@ -55,6 +56,11 @@ public class ScreenClass {
             screen.setScreenId(0);
             System.out.println("TEST");
             //screen.repaint();
+        }
+
+        if( (mouseX > 1700 && mouseX < 1900) && (mouseY > 10 && mouseY < 90)) {
+           stopButton = true;
+
         }
     }
 }
